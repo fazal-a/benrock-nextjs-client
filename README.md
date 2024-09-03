@@ -1,5 +1,9 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# benrock-nextjs-client
+A platform that seamlessly connects to your location, providing a unified view of social media posts, threads, and messages.
+
+
 ## Getting Started
 
 First, run the development server:
