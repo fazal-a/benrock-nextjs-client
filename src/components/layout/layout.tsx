@@ -1,29 +1,31 @@
 import React from 'react';
-import { BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
-import { MdExplore } from "react-icons/md";
-import {styled} from "@mui/system";
+import { BottomNavigation, BottomNavigationAction, Box, Grid2, Container } from '@mui/material';
+import { IoChatbubbleSharp, IoCompassOutline, IoCameraOutline } from "react-icons/io5";
 
-const Container = styled('div')(({ theme }) => ({
-    display: 'flex',
-    flexDirection: 'column',
-    width: '100%',
-    maxWidth: '420px', // Maximum width to mimic mobile screen on larger devices
-    height: '100vh',
-    margin: '0 auto',
-    boxShadow: '0px 0px 10px rgba(0,0,0,0.1)', // Adds shadow for tablet/desktop
-    backgroundColor: theme.palette.background.default,
-}));
-
-const MainContent = styled('div')({
-    flexGrow: 1,
-    overflow: 'auto',
-});
 const Layout: React.FC = ({ children }) => {
     const [value, setValue] = React.useState(0);
 
     return (
-        <Container>
-            <MainContent>{children}</MainContent>
+        <Container
+            maxWidth="sm"
+            sx={{
+                display: "flex",
+                flexDirection: "column",
+                height: "100vh",
+                backgroundColor: "white",
+            }}
+        >
+            <Grid2
+                container
+                sx={{
+                    flexGrow: 1,
+                    overflowY: 'auto',
+                    padding: '1rem',
+                    backgroundColor: '#f7f7f7',
+                }}
+            >
+                {children}
+            </Grid2>
 
             <BottomNavigation
                 value={value}
@@ -33,13 +35,13 @@ const Layout: React.FC = ({ children }) => {
                     backgroundColor: '#FFFC00',
                     borderTopLeftRadius: 10,
                     borderTopRightRadius: 10,
-                    height: '60px',
+                    height: '80px',
                     color: '#000',
                 }}
             >
-                <BottomNavigationAction label="Chat" style={{color:'red'}} icon={<MdExplore />} />
-                <BottomNavigationAction label="Discover" style={{color:'red'}} icon={<MdExplore />} />
-                <BottomNavigationAction label="Camera" style={{color:'red'}} icon={<MdExplore />} />
+                <BottomNavigationAction label="Chat" icon={<IoChatbubbleSharp />} />
+                <BottomNavigationAction label="Discover" icon={<IoCompassOutline />} />
+                <BottomNavigationAction label="Camera" icon={<IoCameraOutline />} />
             </BottomNavigation>
         </Container>
     );

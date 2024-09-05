@@ -1,7 +1,10 @@
+// src/theme/theme.ts
+
 import { createTheme } from '@mui/material/styles';
 
-const theme = createTheme({
+const lightTheme = createTheme({
     palette: {
+        mode: 'light', // Specify light mode
         primary: {
             main: '#FFFC00',  // Snapchat yellow
         },
@@ -16,45 +19,33 @@ const theme = createTheme({
         fontFamily: '"Segoe UI", "Helvetica", "Arial", sans-serif',
         fontWeightRegular: 400,
         fontWeightBold: 700,
-        h1: {
-            fontSize: '2rem',
-            fontWeight: 700,
-            color: '#000000',
-        },
-        h2: {
-            fontSize: '1.5rem',
-            fontWeight: 700,
-            color: '#000000',
-        },
-        body1: {
-            fontSize: '1rem',
-            fontWeight: 400,
-            color: '#000000',
-        },
-        button: {
-            fontSize: '1rem',
-            fontWeight: 700,
-            textTransform: 'none', // No uppercase
-        },
     },
     shape: {
-        borderRadius: 10, // Rounded corners to match Snapchat's UI
-    },
-    components: {
-        MuiButton: {
-            styleOverrides: {
-                root: {
-                    textTransform: 'none', // No automatic capitalization
-                    borderRadius: '20px',  // Rounded buttons
-                    padding: '10px 20px',
-                    backgroundColor: '#FFFC00', // Snapchat yellow
-                    '&:hover': {
-                        backgroundColor: '#f1e600',  // Slightly darker yellow on hover
-                    },
-                },
-            },
-        },
+        borderRadius: 10,
     },
 });
 
-export default theme;
+const darkTheme = createTheme({
+    palette: {
+        mode: 'dark', // Specify dark mode
+        primary: {
+            main: '#FFFC00',  // Snapchat yellow
+        },
+        secondary: {
+            main: '#FFFFFF',  // White for text/icons in dark mode
+        },
+        background: {
+            default: '#575757', // Dark background for the app
+        },
+    },
+    typography: {
+        fontFamily: '"Segoe UI", "Helvetica", "Arial", sans-serif',
+        fontWeightRegular: 400,
+        fontWeightBold: 700,
+    },
+    shape: {
+        borderRadius: 10,
+    },
+});
+
+export { lightTheme, darkTheme };
