@@ -1,16 +1,16 @@
 import React from 'react';
-import { Grid2, Container } from '@mui/material';
+import { Container } from '@mui/material';
 
 const AppLevelLayout: React.FC = ({ children }) => {
-
     return (
         <Container
-            maxWidth="sm"
+            maxWidth="sm" // Keep the width small (like mobile devices)
             sx={{
-                // display: "flex",
-                // flexDirection: "column",
+                display: "flex",
+                flexDirection: "column",
                 height: "100vh",
-                backgroundColor: "red",
+                backgroundColor: "#fff", // Default background
+                // padding: "1rem",
             }}
         >
             {children}
