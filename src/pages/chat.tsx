@@ -1,6 +1,6 @@
 import React from 'react';
-import BottomNavigationLayout from '@/components/layout/BottomNavigationLayout';
 import Chat from "@/components/chat/Chat";
+import BottomNavigationLayout from "@/components/layout/bottomNavigationLayout";
 
 const ChatPage: React.FC = () => {
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from '@mui/material';
 
-const AppLevelLayout: React.FC = ({ children }) => {
+const AppLevelLayout =  ({ children }: { children: React.ReactNode }) => {
     return (
         <Container
             maxWidth="sm" // Keep the width small (like mobile devices)

@@ -40,7 +40,7 @@ const Signup: React.FC = () => {
     };
 
     const handleLogin = async () => {
-        await router.push('/login');
+        await router.push('/l=Login');
         console.log("Sign up clicked");
     };
 

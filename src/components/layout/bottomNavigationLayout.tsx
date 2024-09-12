@@ -2,7 +2,7 @@ import React from 'react';
 import { BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
 import { IoChatbubbleSharp, IoCompassOutline, IoCameraOutline } from "react-icons/io5";
 
-const BottomNavigationLayout: React.FC = ({ children }) => {
+const BottomNavigationLayout = ({ children }: {children: React.ReactNode}) => {
     const [value, setValue] = React.useState(0);
 
     return (
