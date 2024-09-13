@@ -1,6 +1,7 @@
 // src/context/auth-context.tsx
 import { createContext, useContext, useEffect, useReducer, useRef } from 'react';
 import PropTypes from 'prop-types';
+import {useRouter} from "next/router";
 
 const HANDLERS = {
     INITIALIZE: 'INITIALIZE',
@@ -38,6 +39,7 @@ export const AuthContext = createContext({ undefined });
 
 export const AuthProvider = (props: any) => {
     const { children } = props;
+    const router  = useRouter();
     const [state, dispatch] = useReducer(reducer, initialState);
     const initialized = useRef(false);
 
@@ -69,11 +71,18 @@ export const AuthProvider = (props: any) => {
         sessionStorage.setItem('token', data.token);
         sessionStorage.setItem('authenticated', 'true');
         sessionStorage.setItem('user', JSON.stringify(data.user));
+
+        // After login, redirect to the chat page
+        router.push('/chat');
+
     };
 
     const signOut = () => {
         dispatch({ type: HANDLERS.SIGN_OUT });
         sessionStorage.clear();
+        // After login, redirect to the chat page
+        router.push('/Login');
+
     };
 
     return (

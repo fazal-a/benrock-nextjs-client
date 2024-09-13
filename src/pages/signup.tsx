@@ -13,9 +13,15 @@ import {
 } from '@mui/material';
 import {FaSnapchatSquare} from "react-icons/fa";
 import {useRouter} from "next/router";
+import {loginInitialValues, signupInitialValues} from "@/utils/initial-values";
+import {signupValidationSchema, validationSchema} from "@/utils/validation-schema";
+import {loginHandler, signupHandler} from "@/helpers/auth-helpers";
+import {Formik} from "formik";
+import {useAuthContext} from "@/context/auth-context";
 
 const Signup: React.FC = () => {
     const router = useRouter();
+    const {signUp} = useAuthContext();
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [username, setUsername] = useState('');
@@ -45,6 +51,13 @@ const Signup: React.FC = () => {
     };
 
     return (
+        <Formik
+            initialValues={signupInitialValues}
+            validationSchema={signupValidationSchema}
+            onSubmit={async (values, { setSubmitting, setErrors, setStatus }) => {
+                await signupHandler(values, setSubmitting, setErrors, setStatus, signUp);
+            }}>
+            {({errors, touched, values, handleBlur, handleChange, handleSubmit, isSubmitting, status})=>(
         <Box
             sx={{
                 display: 'flex',
@@ -71,21 +84,28 @@ const Signup: React.FC = () => {
                     <TextField
                         label="First Name"
                         type="text"
+                        name="firstName"
                         variant="standard"
                         fullWidth
-                        value={firstName}
-                        onChange={(e) => setFirstName(e.target.value)}
+                        value={values.firstName}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        helperText={touched.firstName && errors.firstName}
+                        error={!!touched.firstName && !!errors.firstName}
                     />
                 </Grid2>
                 <Grid2 item xs={6}>
                     <TextField
                         label="Last Name"
                         type="text"
+                        name="lastName"
                         variant="standard"
                         fullWidth
-                        value={lastName}
-                        padding={0}
-                        onChange={(e) => setLastName(e.target.value)}
+                        value={values.lastName}
+                        onBlur={handleBlur}
+                        onChange={handleChange}
+                        helperText={touched.lastName && errors.lastName}
+                        error={!!touched.lastName && !!errors.lastName}
                     />
                 </Grid2>
             </Grid2>
@@ -93,10 +113,14 @@ const Signup: React.FC = () => {
             <TextField
                 label="Username"
                 type="text"
+                name="userName"
                 variant="standard"
                 fullWidth
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
+                value={values.userName}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                helperText={touched.userName && errors.userName}
+                error={!!touched.userName && !!errors.userName}
                 sx={{marginBottom: '1rem'}}
             />
 
@@ -106,8 +130,9 @@ const Signup: React.FC = () => {
                     row
                     aria-label="gender"
                     name="gender"
-                    value={gender}
-                    onChange={(e) => setGender(e.target.value)}
+                    value={values.gender}
+                    onBlur={handleBlur}
+                    onChange={handleChange}
                 >
                     <FormControlLabel value="male" control={<Radio/>} label="Male"/>
                     <FormControlLabel value="female" control={<Radio/>} label="Female"/>
@@ -118,42 +143,55 @@ const Signup: React.FC = () => {
             <TextField
                 label="Email"
                 type="email"
+                name="email"
                 variant="standard"
                 fullWidth
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                value={values.email}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                helperText={touched.email && errors.email}
+                error={!!touched.email && !!errors.email}
                 sx={{marginBottom: '1rem'}}
             />
 
             <TextField
                 label="Password"
                 type="password"
+                name="password"
                 variant="standard"
                 fullWidth
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={values.password}
+                onBlur={handleBlur}
+                onChange={handleChange}
+                helperText={touched.password && errors.password}
+                error={!!touched.password && !!errors.password}
                 sx={{marginBottom: '1rem'}}
             />
 
-            <Button
-                variant="contained"
-                fullWidth
-                onClick={handleSignup}
-                sx={{
-                    color: '#000000',
-                    boxShadow: 'none',
-                    textTransform: 'none',
-                    borderRadius: '20px',
-                    padding: '10px 20px',
-                    backgroundColor: '#FFFC00', // Snapchat yellow for the button
-                    '&:hover': {
-                        backgroundColor: '#f1e600', // Slightly darker yellow on hover
-                    },
-                    marginBottom: '1rem',
-                }}
+            {/* Display form-wide error message below input fields */}
+            {status && <Typography style={{ color: 'red' }}>{status}</Typography>}
+
+            <Button variant="contained"
+                    fullWidth
+                    type="button"
+                    onClick={handleSubmit}  // Call handleSubmit directly
+                    disabled={isSubmitting}
+                    sx={{
+                        color: '#000000',
+                        boxShadow: 'none',
+                        textTransform: 'none',
+                        borderRadius: '20px',
+                        padding: '10px 20px',
+                        backgroundColor: '#FFFC00', // Snapchat yellow for the button
+                        '&:hover': {
+                            backgroundColor: '#f1e600', // Slightly darker yellow on hover
+                        },
+                        marginBottom: '1rem',
+                    }}
             >
-                Sign Up
+                {isSubmitting ? 'Signing up...' : 'Sign Up'}
             </Button>
+
             <Grid2 container justifyContent="center" sx={{mt: 3}}>
                 <Typography container sx={{
                     display: 'flex',
@@ -173,6 +211,9 @@ const Signup: React.FC = () => {
                 </Typography>
             </Grid2>
         </Box>
+            )}
+
+        </Formik>
     );
 };
 

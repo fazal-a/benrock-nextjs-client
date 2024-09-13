@@ -1,4 +1,3 @@
-// src/components/auth-guard.tsx
 import { ReactNode, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
@@ -9,21 +8,30 @@ interface Props {
 }
 
 export const AuthGuard = ({ children }: Props) => {
-    const { isAuthenticated, isLoading } = useAuthContext();
+    const {isAuthenticated, isLoading } = useAuthContext();
     const router = useRouter();
     const [checked, setChecked] = useState(false);
 
     useEffect(() => {
         if (!isLoading) {
             if (!isAuthenticated) {
-                router.push('/auth/login');
+                router.push('/login');
             } else {
                 setChecked(true);
             }
         }
-    }, [isAuthenticated, isLoading]);
+    }, [isAuthenticated, isLoading]); // Correctly close the useEffect function here
 
     if (!checked) return null;
+
+    console.log(
+        "isAuthenticated:::",
+        isAuthenticated,
+        "isLoading:::",
+        isLoading,
+        "checked::",
+        checked
+    );
 
     return <>{children}</>;
 };
