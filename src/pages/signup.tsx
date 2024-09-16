@@ -46,7 +46,7 @@ const Signup: React.FC = () => {
     };
 
     const handleLogin = async () => {
-        await router.push('/l=Login');
+        await router.push('/Login');
         console.log("Sign up clicked");
     };
 
@@ -80,7 +80,7 @@ const Signup: React.FC = () => {
             </Typography>
 
             <Grid2 container spacing={1} sx={{marginBottom: '1rem', padding: 0}}>
-                <Grid2 item xs={6}>
+                <Grid2 size={6}>
                     <TextField
                         label="First Name"
                         type="text"
@@ -94,7 +94,7 @@ const Signup: React.FC = () => {
                         error={!!touched.firstName && !!errors.firstName}
                     />
                 </Grid2>
-                <Grid2 item xs={6}>
+                <Grid2 size={6}>
                     <TextField
                         label="Last Name"
                         type="text"
