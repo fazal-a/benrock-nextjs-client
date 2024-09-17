@@ -13,8 +13,7 @@ const Layout: React.FC = ({ children }) => {
                 flexDirection: "column",
                 height: "100vh",
                 backgroundColor: "white",
-            }}
-        >
+            }}>
             <Grid2
                 container
                 sx={{
@@ -22,8 +21,7 @@ const Layout: React.FC = ({ children }) => {
                     overflowY: 'auto',
                     padding: '1rem',
                     backgroundColor: '#f7f7f7',
-                }}
-            >
+                }}>
                 {children}
             </Grid2>
 
@@ -37,8 +35,7 @@ const Layout: React.FC = ({ children }) => {
                     borderTopRightRadius: 10,
                     height: '80px',
                     color: '#000',
-                }}
-            >
+                }}>
                 <BottomNavigationAction label="Chat" icon={<IoChatbubbleSharp />} />
                 <BottomNavigationAction label="Discover" icon={<IoCompassOutline />} />
                 <BottomNavigationAction label="Camera" icon={<IoCameraOutline />} />
