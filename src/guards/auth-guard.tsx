@@ -7,6 +7,11 @@ interface Props {
     children?: ReactNode;
 }
 
+interface useAuthContextProps {
+    isAuthenticated?: boolean
+    isLoading?: boolean;
+}
+
 export const AuthGuard = ({ children }: Props) => {
     const {isAuthenticated, isLoading } = useAuthContext();
     const router = useRouter();

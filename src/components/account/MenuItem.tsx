@@ -21,7 +21,7 @@ const MenuItem: React.FC<MenuItemProps> = ({leftIcon: LeftIcon, rightIcon: Right
                 marginBottom: '10px',
             }}
         >
-            <LeftIcon style={{marginRight: '10px'}}/>
+            <LeftIcon fontSize="large" style={{marginRight: '15px'}}/>
             <Typography sx={{flexGrow: 1}}>{label}</Typography>
             <IconButton>
                 <RightIcon/>

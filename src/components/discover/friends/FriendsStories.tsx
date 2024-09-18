@@ -55,12 +55,10 @@ const FriendsStories: React.FC = () => {
 
             {/* Stories Scrollable Horizontally */}
             <Box
-                mb={3}
                 sx={{
                     display: 'flex',
                     overflowX: 'auto',
                     whiteSpace: 'nowrap',
-                    paddingBottom: '10px',
                     '&::-webkit-scrollbar': {
                         display: 'none', // Hide the scrollbar
                     },

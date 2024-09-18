@@ -1,18 +1,18 @@
-//pages/chat.tsx
+//pages/camera.tsx
 import React from 'react';
-import Chat from "@/components/chat/Chat";
 import BottomNavigationLayout from "@/components/layout/bottomNavigationLayout";
 import {AuthGuard} from "@/guards/auth-guard";
+import Page from "@/components/camera";
 
 const ChatPage: React.FC = () => {
 
     return (
         <div>
-        <AuthGuard>
-        <BottomNavigationLayout>
-            <Chat />
-        </BottomNavigationLayout>
-        </AuthGuard>
+            <AuthGuard>
+                <BottomNavigationLayout>
+                    <Page />
+                </BottomNavigationLayout>
+            </AuthGuard>
         </div>
     );
 };

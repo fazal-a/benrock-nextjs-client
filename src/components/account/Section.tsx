@@ -3,6 +3,7 @@ import {Box, Typography} from '@mui/material';
 
 type SectionProps = {
     header: string;
+    children: React.ReactNode;
 };
 
 const Section: React.FC<SectionProps> = ({header, children}) => {

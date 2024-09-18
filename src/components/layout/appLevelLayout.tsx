@@ -1,20 +1,21 @@
 import React from 'react';
-import { Container } from '@mui/material';
+import { Box } from '@mui/material';
 
-const AppLevelLayout =  ({ children }: { children: React.ReactNode }) => {
+const AppLevelLayout = ({ children }: { children: React.ReactNode }) => {
     return (
-        <Container
-            maxWidth="sm" // Keep the width small (like mobile devices)
+        <Box
             sx={{
+                maxWidth: "sm", // Keep the width small (like mobile devices)
+                margin: "0 auto", // Center horizontally
                 display: "flex",
                 flexDirection: "column",
                 height: "100vh",
-                backgroundColor: "#fff", // Default background
-                // padding: "1rem",
+                backgroundColor: "#FAFAFA",
+                width: "100%"
             }}
         >
             {children}
-        </Container>
+        </Box>
     );
 };
 

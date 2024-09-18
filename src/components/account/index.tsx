@@ -1,28 +1,41 @@
 // components/account/index.tsx
 import React from 'react';
-import {Box, Typography, Button, Avatar} from '@mui/material';
-import {FaCamera, FaEllipsisV, FaGrinBeam, FaListAlt, FaUserPlus} from 'react-icons/fa'; // Import react-icons properly
-import Section from '@/components/account/Section';
-import MenuItem from '@/components/account/MenuItem';
+import {Box, Typography, Button, Avatar, IconButton} from '@mui/material';
+import {FaCamera, FaEllipsisV, FaGrinBeam, FaListAlt, FaUserPlus} from 'react-icons/fa';
+import {MdExpandCircleDown} from "react-icons/md";
+import {IoMdSettings} from "react-icons/io";
+
+import Section from "@/components/account/Section";
+import MenuItem from "@/components/account/MenuItem"; // Import react-icons properly
 
 const Page: React.FC = () => {
-    const username = "Julia";
+    const profileName = "Julia";
+    const username = "@julia_sc";
 
     return (
         <Box sx={{padding: '20px', flexGrow: 1}}>
             <Box display="flex" justifyContent="space-between" alignItems="center">
-                <Button onClick={() => console.log('Close button clicked')} sx={{color: '#FF5F5F'}}>
-                    <span className="material-icons">expand_more</span> {/* Use MUI icons correctly */}
-                </Button>
+                <IconButton onClick={() => console.log('Close button clicked')} sx={{color: '#FF5F5F'}} size="large">
+                    <MdExpandCircleDown/>
+                </IconButton>
+                <IconButton  size="large">
+                    <IoMdSettings/>
+                </IconButton>
+            </Box>
+
+            <Box display="flex" justifyContent="center" alignItems="center">
                 <Avatar
                     src="/path-to-avatar.png"
                     alt="Snapchat Profile"
-                    sx={{width: 80, height: 80, backgroundColor: '#FFFC00'}}
+                    sx={{width: 100, height: 100, borderRadius: '50%',}}
                 />
-                <span className="material-icons" style={{color: '#7C7C7C'}}>settings</span>
             </Box>
 
-            <Typography variant="h6" align="center" sx={{marginY: '15px'}}>
+            <Typography variant="h6" align="center" sx={{marginTop: '15px'}}>
+                {profileName}
+            </Typography>
+
+            <Typography align="center">
                 {username}
             </Typography>
 

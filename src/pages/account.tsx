@@ -1,6 +1,6 @@
 // pages/accounts.tsx
 import React from 'react';
-import Page from '@/components/account'; // Correct import path
+import Page from '@/components/account';
 
 const AccountPage: React.FC = () => {
     return <Page />;
